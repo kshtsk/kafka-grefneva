@@ -11,7 +11,7 @@ setup(
         classifiers=["Kafka"],
         python_requires='>=3.6',
         install_requires=[
-            'kafka',
+            'kafka-python',
             'docopt',
             'requests',
             'psycopg2-binary',
