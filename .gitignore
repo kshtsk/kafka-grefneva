@@ -1,0 +1,9 @@
+*.pyc
+*.pyo
+.tox
+.*.swp
+
+/*.egg-info
+/virtualenv
+/v
+/build
