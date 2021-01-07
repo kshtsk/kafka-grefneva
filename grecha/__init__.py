@@ -1,7 +1,7 @@
 import sys
 import docopt
 
-doc = """
+__doc__ = """
 Usage: grecha --help
        grecha watch [options]
        grecha store [options]
@@ -17,10 +17,10 @@ Common arguments:
     --kafka-ssl-key <path>                  Kafka service.key path
 
 Watch specific arguments:
-    -w, --wait <seconds>                    Seconds to wait between sites checks [default: 5]
+    -w, --wait <seconds>                    Seconds to wait between site checks [default: 5]
 
 Store specific arguments:
-    -d, --postgresql-uri <uri>              PostgreSQL database uri, if used other
+    -d, --postgresql-uri <uri>              PostgreSQL database uri, if used then other
                                             connection related options will be ignored
     -H, --postgresql-host <addr>            PostgreSQL host name [default: localhost]
     -P, --postgresql-port <port>            PostgreSQL port number [default: 5432]
@@ -31,7 +31,7 @@ Store specific arguments:
 
 
 def main():
-    args = docopt.docopt(doc, argv=sys.argv[1:])
+    args = docopt.docopt(__doc__, argv=sys.argv[1:])
     print('Hello, this is Kafka Grefneva, enjoy your meal.')
     if args.get('watch'):
         from .watcher import watch

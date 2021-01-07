@@ -11,7 +11,13 @@ virtualenv -p python3 v
 . v/bin/activate
 ```
 
-For development purpose it can be installed very easily from the source code.
+Install directly from github:
+
+```bash
+pip install git+https://github.com/.../kafka-grefneva
+```
+
+For development purpose it can be installed from the source code:
 
 ```bash
 git clone https://github.com/.../kafka-grefneva
@@ -21,18 +27,31 @@ cd kafka-grefneva && pip install .
 Or use `python` exclusively within your virtual environment:
 
 ```bash
-python setup install
+python setup.py install
 ```
-
-Also you can use:
+or without a need to reinstall after each change:
 
 ```bash
-pip install git+https://github.com/.../kafka-grefneva@tag
-
+python setup.py develop
 ```
 
+### Running Unit Tests
+
+This is optional and need for adding new code. Since unit test should not
+require any test environment per se, it can be run without any kafka,
+databse or other website available.
+
+```bash
+tox -e py3
+```
 
 ## Local Test Environment
+
+For running locally we need:
+
+- kafka service
+- postgresql service
+- some http server
 
 ### Start Kafka Brocker
 

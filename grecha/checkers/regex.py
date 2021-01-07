@@ -4,7 +4,7 @@ from . import BasicChecker
 
 
 class RegexChecker(BasicChecker):
-    """Regex Checker
+    """Regular Expression Checker Class.
     
     Use this class as base for specific regex.
     The self.regex member should contain a list
@@ -16,12 +16,21 @@ class RegexChecker(BasicChecker):
 
     The checker matches the response text if any
     of the given regular expressions get matched.
+
+    Another use case is for adhoc regex checkers:
+
+        RegexChecker('localhost:8081', ['some expression', 'another expression'])
+
     """
     def __init__(self, url, regex=None):
         BasicChecker.__init__(self, url)
         self.regex = regex or []
 
     def match(self, text):
+        """
+        Returns True if any of the regular expression from the defined list
+        in `self.regex` can be found in the `text`, otherwise False.
+        """
         _match = None
         for x in self.regex:
             if x:

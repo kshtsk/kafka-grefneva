@@ -2,7 +2,9 @@ import requests
 import time
 
 class BasicChecker:
-    """ Basic Site Checker """
+    """
+    Basic Site Checker
+    """
     regex = []
     def __init__(self, url):
         self.url = url
@@ -12,12 +14,22 @@ class BasicChecker:
         return f'[url={self.url}]'
 
     def match(self, text):
+        """
+        Overload this method if you need extra site checking.
+        """
         return None
 
 
     def check(self):
         """
-        Check site availability and return message dict
+        Checks site availability and returns message dict, which ontains following records:
+
+        :key url:       site webpage address being checked
+        :key match:     match results, defaults to None, `match` method should be
+                        overrided if it is needed an extra page checking.
+        :key date:      the check timestamp in format 'DD-mm-YYYY HH:MM:SS'
+        :key status:    http response status code or None if the site is unavailable
+
         """
         print(f"Checking {self}")
         match = None

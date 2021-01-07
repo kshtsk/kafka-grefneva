@@ -1,8 +1,34 @@
+"""
+Kafka consumer module
+"""
 import json
 import psycopg2
 from kafka import KafkaConsumer
 
 def store(args):
+    """
+    Kafka consumer method: store messages to database
+
+    Connects to kafka broker, connects to database,
+    reads messages from kafka and inserts to table.
+    Creates table if it is missing.
+
+    Support following arguments:
+
+    :arg    --topic:                topic name
+    :arg    --kafka:                kafka service uri
+    :arg    --kafka-ssl:            use ssl proto for kafka
+    :arg    --kafka-ssl-ca:         kafka ssl ca file path
+    :arg    --kafka-ssl-cert:       kafka ssl cert file path
+    :arg    --kafka-ssl-key:        kafka ssl key file path
+    :arg    --postgresql-uri:       Connection URI
+    :arg    --postgresql-host:      hostname to connect
+    :arg    --postgresql-port:      port number
+    :arg    --postgresql-database:  database name
+    :arg    --postgresql-username:  access user
+    :arg    --postgresql-password:  access secret
+
+    """
     topic = args.get('--topic')
     kafka = args.get('--kafka')
     cafile = args.get('--kafka-ssl-ca')
