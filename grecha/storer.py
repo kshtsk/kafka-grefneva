@@ -13,7 +13,7 @@ def store(args):
     reads messages from kafka and inserts to table.
     Creates table if it is missing.
 
-    Support following arguments:
+    Supports following arguments:
 
     :arg    --topic:                topic name
     :arg    --kafka:                kafka service uri
